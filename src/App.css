@@ -1,0 +1,844 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: Asap, sans-serif;
+}  
+:root {
+  --color: #7200ff;
+  --bg: #1c2a33;   
+  --dashdark: #0a263b;
+  --dashlight: #b8c6ff;
+  --gradpink: linear-gradient(112deg, rgba(202,19,222,1) 0%, rgba(255,152,164,1) 100%);
+  --gradgreen: linear-gradient(112deg, rgba(49,235,182,1) 0%, rgba(189,224,22,1) 100%);
+  --gradpurple:  linear-gradient(152deg, rgba(143,71,250,1) 22%, rgba(21,208,255,1) 100%);
+}   
+
+.grid {
+  position: relative;
+  margin: auto;
+  width: 1300px;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+h1,h2,h3,h4,h5,h6,i,p,li,button,a,span,small,img,section {
+  position: relative;
+  margin: 0;
+}
+img {
+  object-fit: cover;
+}
+button {
+  outline: none;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+a {
+  text-decoration: none;
+}
+input, textarea {
+  outline: none;
+}
+hr {
+  border: none;
+}
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background: var(--color);
+  color: white;
+}
+::-webkit-scrollbar {
+  display: none;
+} 
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color);
+  border-radius: 40px;
+} 
+.close {
+  position: absolute;
+  padding: 5px;
+  font-style: normal;
+  font-weight: 500;
+  transform: scale(1.5);
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  color: #333;
+  transition: all 0.3s;
+  z-index: 100;
+}
+.close::before {
+  position: absolute;
+  top: 0px;
+  left: 10px;
+  transform: rotate(-42deg);
+  content: '|';
+}
+.close::after {
+  position: absolute;
+  top: 0px;
+  left: 11px;
+  content: '|';
+  transform: rotate(42deg);
+}
+.spacer {
+  height: 50px;
+}
+.spacers {
+  height: 30px;
+}
+.spacerl {
+  height: 100px;
+}
+
+.app {
+  display: none; 
+}  
+.frontpage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./images/frontbg.jpg');
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  place-items:center;
+}
+.frontcover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(53deg, rgba(255, 153, 0,1) 10%, rgba(255,211,0,1) 100%);
+  clip-path: polygon(0 0, 60% 0, 40% 100%, 0% 100%);
+  z-index: 1;
+  opacity: 0.8;
+  transition: all 0.4s;
+}
+.fronttitles {
+  position: relative;
+  top: 0;
+  transition: all 0.3s;
+}
+.frontpage .grid {
+  z-index: 2;
+  width: 1400px;
+}
+.frontpage h1 {
+  font-size: 70px;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.frontpage h5 {
+  font-weight: 500;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+.frontpage button {
+  padding: 15px 25px;
+  font-size: 16px;
+  margin: 10px;
+  margin-left: 0;
+  opacity: 0.7;
+}
+.frontpage button:hover {
+  opacity: 1;
+}
+.frontpage button i {
+  margin-right: 5px;
+}
+.registercont {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  z-index: 100;
+}
+.registercont button {
+  padding: 15px 25px;
+  font-size: 16px;
+  margin: 10px;
+  margin-left: 0;
+  margin-right: 10px;
+  background: #000;
+  color: #fff;
+}
+.registercont button i {
+  margin-right: 10px;
+}
+.registercont button:hover {
+  background: #fff;
+  color: #000;
+  opacity: 0.7
+}
+
+.intro {
+  position: relative;
+  opacity: 0;
+  width: 100%;
+  height: 100vh;
+  transition: all 0.3s;
+  place-items: center;
+  background: #10162e;
+}
+.introbg {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./images/introbg.jpg');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.07;
+} 
+.introcont {
+  position: relative;
+  text-align: center;
+  margin: auto;
+  top: 30px;
+  width: 900px;
+  height: 700px;
+  padding: 30px;
+  box-shadow: 0 1px 15px rgba(0,0,0,0.2);
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  display: none;
+  transition: all 0.3s;
+}
+.introcont img {
+  position: relative;
+  width: 50px;
+  margin: auto;
+} 
+.intro h3 {
+  font-size: 30px;
+  color: #fff;
+  font-weight: 500;
+  clip-path: polygon(0% 1%, 100% 0, 100% 100%, 10% 100%);
+  background: var(--bg);
+  display: inline-block;
+  padding: 10px 20px;
+} 
+.intro h5 {
+  padding: 10px;
+  padding-right: 30px;
+  background: var(--color);
+  color: #fff;
+  clip-path: polygon(0 0, 40% 0, 97% 100%, 0% 100%);
+  display: inline-block;
+  font-size: 30px;
+  left: 34px;
+}
+.teamboxcont {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  overflow-y: scroll;
+  height: 75%;
+  padding-bottom: 50px;
+}
+.confirmboxcont {
+  overflow-y: scroll;
+  height: 75%;
+  padding-bottom: 50px;
+} 
+.intro-team .teambox {
+  position: relative;
+  width: 250px;
+  height: 180px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s; 
+  cursor: pointer;
+}
+.intro-team .teambox:hover {
+  background: rgba(230,230,230,0.3);
+}
+.intro-team .teambox h6 {
+  font-size: 18px;
+  position: absolute;
+  font-weight: 500;
+  left: 0;
+  right: 0;
+  bottom: 20px;
+} 
+.intro-team .teambox img {
+  width: 100px;
+}
+.intro button {
+  background: var(--color);
+  margin-top: 20px;
+  padding: 15px 25px;
+  position: relative;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #fff;
+} 
+.intro button:not([disabled]):hover {
+  background: var(--bg);
+  color: #fff;
+}
+.intro button i {
+  margin-left: 10px;
+  top: 2px;
+  font-size: 18px;
+}
+.boxtitle {
+  position: relative;
+  font-size: 12px;
+  margin-left: 50px;
+  background: var(--dashdark);
+  padding: 20px 20px;
+  color: #333;
+  cursor: default;
+  display: inline;
+  user-select: none;
+}
+.intro-actions {
+  position: relative;
+  text-align: left;
+  margin-left: 10px;
+}
+.boxtitle img {
+  width: 30px;
+  top: 10px;
+  position: relative;
+}
+.boxtitle h6 {
+  position: relative;
+  display: inline;
+  font-size: 14px;
+  color: #555;
+  margin-left: 10px;
+}
+.choosebox {
+  position: relative;
+  left: 0;
+  width: 400px;
+  height: 280px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  margin: 10px;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.3);
+  transition: all 0.3s; 
+  cursor: pointer;
+  display: grid;
+}
+.choosebox:hover {
+  background: rgba(255,255,255,0.7);
+}
+.choosebox h4 {
+  font-size: 24px;
+}
+.playerboxcont {
+  position: relative;
+  display: flex;
+  align-items: center;
+} 
+.newplayercont, .existplayercont {
+  position: relative;
+  opacity: 0;
+  width: 100%;
+  height: 500px;
+  transition: all 0.3s;
+  grid-template-columns: 50% 50%;
+  grid-column-gap: 60px;
+  text-align: center;
+  display: none;
+}  
+.intro-back-btn {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  padding: 10px 15px;
+  font-size: 18px;;
+  color: #000;
+  background: #ddd;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.intro-back-btn:hover {
+  background: #d1d1d1;
+}
+.intro-players .teaminfo {
+  position: absolute;
+  right: 40px;
+  top: 45px;
+  font-size: 14px;
+  color: #555;
+  padding: 5px 10px;
+  background: #ddd;
+  user-select: none;
+}
+.newplayercont img {
+  width: 100%;    
+  top: -80px;
+}
+.innercreateplayer {
+  position: relative;
+  margin-top: 50px;
+}
+.innercreateplayer h4 {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  clip-path: polygon(0% 1%, 100% 0, 100% 100%, 10% 100%);
+  background: var(--bg);
+  display: block;
+  width: 230px;
+  padding: 10px 20px;
+  text-align: right;
+}
+.innercreateplayer h4 i {
+  margin-right: 10px;
+}
+.innercreateplayer input {
+  display: block;
+  width: 300px;
+  margin: 20px;
+  border: none;
+  padding: 15px 10px;
+  font-size: 17px;
+  box-shadow: 0 0.5px 5px rgba(0,0,0,0.1);
+}
+.innercreateplayer input:focus {
+  box-shadow: 0px 0px 10px -6px rgba(250,187,0,1);
+}
+h6.created-player-details {
+  position: relative;
+  float: right;
+  font-size: 14px;
+  background: #ddd;
+  padding: 5px 10px;
+  user-select: none;
+  color: #333;
+  margin-top: 35px;
+  margin-right: 10px;
+}
+h6.created-player-details span {
+  color: var(--color);
+  margin-right: 10px;
+}
+.confirmboxcont {
+  display: block;
+}
+.team-picked {
+  position: relative;
+  width: 100%;
+}
+.team-picked h2 {
+  font-size: 30px;
+  text-align: center;
+  font-weight: 500;
+  margin-top: 10px;
+}
+.team-picked img {
+  width: 100px;
+  margin: auto;
+  margin-top: 20px;
+}
+.confirmboxcont table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #e9e9e9;
+}
+.confirmboxcont table th {
+  padding: 15px 10px;
+  background: var(--bg);
+  color: #fff;
+  font-weight: 500;
+}
+.confirmboxcont table td {
+  padding: 20px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.intro-players .close {
+  position: absolute;
+  top: 40px;
+  left: 0px;
+}
+
+
+/* HomeCont */
+.homecont {
+  display: none;
+  grid-template-columns: 320px auto;
+  background: #10162e;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.sidebar { 
+  display: grid;
+  overflow-y: scroll;
+  height: 100vh;
+  grid-template-rows: 300px auto auto;
+}
+.sideinfo {
+  text-align: center;
+  position: relative;
+  background:var(--dashdark);
+  grid-row: 1/2;
+} 
+.sideinfo  h4 {
+  margin-top: 20px;
+  font-size: 20px;
+  color: #fff
+}
+.sideinfo h6 {
+  font-size: 13px;
+  color: #ddd;
+  font-weight: 600;
+  display: inline-block;
+  margin: 10px;
+}
+.sideinfo img {
+  width: 120px;
+  margin: auto;
+  margin-top: 60px;  
+}
+.sideinfo small {
+  margin: 10px;
+  color: #ccc;
+  font-size: 12px;
+}
+.sideinfo small i {
+  font-size: 14px;
+  margin-right: 10px;
+}
+.sideinfo small span {
+  font-size: 14px;
+  margin-right: 5px;
+} 
+.sidemenu {
+  background:#151c3d;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: 120px 120px 120px;
+}
+.menubtn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--dashlight);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+.menubtn:hover {
+  box-shadow: 0px 49px 83px -20px rgba(0,0,0,0.3);
+  background: var(--color);
+  color: #fff;
+}
+.menubtn h4 {
+  font-weight: 500;
+  margin-top: 10px;
+}
+.menubtn i {
+  font-size: 18px;
+}
+.sidefoot {
+  position: relative;
+  background: var(--dashdark);
+  text-align: center;
+  grid-row: 3/-1;
+}
+.sidefoot p {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff
+}
+.sidefoot small {
+  color: #ddd;
+  display: block;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  background: var(--dashdark);
+  z-index: 900;
+}
+nav > div {
+  border: 1px solid var(--dashlight);
+}
+
+.dashboard {
+  display: block;
+}
+.hometitle {
+  padding: 40px;
+  font-weight: 600;
+  color: #eee;
+}
+.dashgrid {
+  display: grid;
+  height: 100%;
+  position: relative;
+  top: -30px;
+  opacity: 0;
+  grid-template-columns: repeat(13, 1fr);
+  grid-template-areas: 
+  "df df df df df df df df df df df df r1"
+  "d1 d1 d1 d1 d2 d2 d2 d2 d3 d3 d3 d3 r2"
+  "dc dc dc dc dc dc d6 d6 d6 d7 d7 d7 r3"
+  ;
+  padding: 40px;
+  padding-top: 0;
+  grid-auto-flow: row;
+  grid-gap: 20px;
+  transition: all 0.3s;
+}
+.dashbg {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  background-image: url('./images/dashbg.jpg');
+  background-position: center;
+  background-size: cover;
+  opacity: 0.07;
+} 
+.dashbox {
+  position: relative;
+  box-shadow: 0 1px 24px rgba(0,0,0,0.1);
+  background: var(--dashdark);
+  opacity: 0.9;
+  z-index: 10;
+  min-height: 150px;
+  overflow: hidden;
+}
+.dashfeature {
+  grid-area: df;
+  height: 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dash-feat-bg {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/dashfeat.jpg');
+  background-position: center;
+  background-size: cover;
+  z-index: 1;
+  opacity: 0.1;
+}
+.dashfeature > div {
+  position: absolute;
+  z-index: 10;
+}
+.dashtopleft {
+  top: 20px;
+  left: 20px;
+}
+.dashbottomleft {
+  bottom: 30px;
+  left: 20px;
+}
+.dashbottomleft h4 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+}
+.dashbottomleft h5 {
+  color: #ccc;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.dashbottomleft h6 {
+  margin-top: 20px;
+  font-size:15px;
+  color: #eee;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.dashfeature button {
+  padding: 10px 15px;
+  background: var(--gradgreen);
+  color: #fff;
+  margin: auto 10px;
+  margin-left: 0;
+  border-radius: 30px;
+} 
+.dashfeature button:hover {
+  background: linear-gradient(112deg, #fff 0%, #fff 100%);
+  color: #000;
+}
+.dashtopright {
+  top: 20px;
+  right: 20px;
+} 
+.dashtopright h3 {
+  font-size: 24px;
+  font-weight: 500;
+  margin: auto 20px;
+  display: inline-block;
+  color: #fff;
+}
+.dashtopright h5 {
+  color: #eee;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+.dashtopright h5 i {
+  font-size: 15px;
+  margin-right: 5px;
+}
+.dashmiddle {
+  position: relative;
+  text-align: center;
+}
+.dashmiddle h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #fff;
+  text-transform: uppercase;
+}
+.dashmiddle button {
+  margin: auto;
+  padding: 14px 27px;
+}
+.dashmiddle button i {
+  margin-right: 5px;
+}
+.dashbottomright {
+  bottom: 30px;
+  right: 20px;
+}
+.dashbottomright h3 {
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--dashlight);
+  display: inline-block;
+  margin-left: 10px;
+}
+.dashbottomright h5 {
+  font-size: 15px;
+  color: var(--dashlight);
+  font-weight: 400;
+}
+
+.lds-ripple{display:inline-block;position:relative;transform:scale(0.5);width:40px;height:40px;z-index: 100;}.lds-ripple div{position:absolute;border:4px solid var(--dashlight);opacity:1;border-radius:50%;animation:lds-ripple 1.3s cubic-bezier(0,.2,.8,1) infinite}.lds-ripple div:nth-child(2){animation-delay:-.5s}@keyframes lds-ripple{0%{top:36px;left:36px;width:0;height:0;opacity:1}100%{top:0;left:0;width:72px;height:72px;opacity:0}}
+
+.dashfeature .teamlogo {
+  position: absolute;
+  top: 0px;
+  width: 60px;
+}
+.dashmed {
+  height: 250px;
+  padding: 30px;
+}
+.dashmed svg {
+  width: 120%;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+}
+.dashmed i {
+  font-size: 25px;
+  color: var(--dashlight);
+  display: block;
+}
+.dashmed h4 {
+  color: var(--dashlight);
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 30px;
+  display: inline-block;
+  margin-right: 10px;
+}
+.dashmed h3 {
+  color: var(--dashlight);
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 30px;
+  display: inline-block;
+}
+.dashmed h6 {
+  color: var(--dashlight);
+  font-size: 14px;
+  font-weight: 200;
+  opacity: 0.5;
+  margin-top: 10px;
+}
+.dashmed .right h4 {
+  display: block;
+  font-size: 27px;
+}
+.dashmed .right h4 span {
+  display: block;
+  font-size: 12px;
+}
+.d1 {
+  grid-area: d1;
+}
+.d2 {
+  grid-area: d2;
+}
+.d3 {
+  grid-area: d3;
+}
+.dashmed small {
+  position: absolute;
+  bottom: 20px;
+  left: 40px;
+  color: #fff;
+  cursor: pointer;
+}
+.dashmed small i {
+  display: inline-block;
+  color: #fff;
+  top: 4px;
+  margin-left: 10px;
+  transition: all 0.3s;
+  font-size: 22px;
+}
+.dashmed small:hover i {
+  margin-left: 15px;
+}
+.dashchart {
+  grid-area: dc;
+}
+
+
+
+
+
+
+
+
